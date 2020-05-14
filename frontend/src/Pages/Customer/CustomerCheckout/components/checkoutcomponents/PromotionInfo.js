@@ -17,6 +17,7 @@ class PromotionInfo extends Component {
     componentDidMount() {
         orderService.promotionApplied.subscribe((x) => {
             this.setState({ checked: x });
+            console.log('wot',this.state.promotionid)
         }
     );
         orderService.promotionDetails(this.state.promotionid).then((response) => {

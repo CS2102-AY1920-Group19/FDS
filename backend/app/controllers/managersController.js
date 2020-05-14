@@ -721,6 +721,32 @@ const newsalary = async (req, res) => {
   }
 }
 
+/**
+ * total time taken
+ */
+const totaldelitime = async (req, res) => {
+  const { start, end, id } = req.body;
+  console.log('error body: ', req.body);
+  const query = 'select sum(deliversfood - riderstartsjourney) as timetaken from journey where orderid = any(select orderid from delivers where id = $1) and orderid = any(select orderid from orders where ordered_on <= $2 and ordered_on >= $3)'
+  const values = [
+    id,
+    end,
+    start
+  ]
+  
+  try {
+    const { rows } = await dbQuery.query(query, values);
+    const dbResponse = rows;
+    successMessage.data = dbResponse;
+    console.log('res: ', rows);
+    return res.status(status.success).send(successMessage.data);
+  } catch (error) {
+    console.log(error);
+    errorMessage.error = 'Operation was not successful';
+    return res.status(status.error).send(errorMessage.error);
+  }
+}
+
 
 
   export {
@@ -743,5 +769,6 @@ const newsalary = async (req, res) => {
     customerorders,
     checkriderid,
     riderorders,
-    newsalary
+    newsalary,
+    totaldelitime
   };

@@ -296,7 +296,7 @@ import { json } from 'body-parser';
       const { rows } = await dbQuery.query(applicablePromotionsQuery, values);
       const dbResponse = rows;
       successMessage.data = dbResponse;
-      console.log('res: ', dbResponse);
+      console.log('owowowowow: ', dbResponse);
       return res.status(status.success).send(successMessage.data);
     } catch (error) {
       console.log(error);

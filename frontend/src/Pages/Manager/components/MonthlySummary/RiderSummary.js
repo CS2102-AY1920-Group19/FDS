@@ -224,7 +224,8 @@ class DisplaySummary extends Component {
     customerid: null,
     orderids: [],
     showorders: false,
-    totalsalary: 0
+    totalsalary: 0,
+    totaltime: 0,
   };
   setStartDate = (event) => {
     this.setState({ start: event.target.value }, () => {
@@ -304,6 +305,12 @@ class DisplaySummary extends Component {
           this.setState({ nett: data.sum });
         });
       });
+      // managerService.totaldelitime (this.state.start, this.state.end, this.state.customerid).then((response) => {
+      //   response.json().then((data) => {
+      //     console.log(data[0].timetaken.hours)
+      //     this.setState({ totaltime: 0 })
+      //   })
+      // })
   };
 
   handleSelectChange = (event) => {
@@ -381,10 +388,10 @@ class DisplaySummary extends Component {
                             <TableCell align="center">
                               Total Salary Earned
                             </TableCell>
-                            <TableCell align="center">Average Delivery Time</TableCell>
+                            {/* <TableCell align="center">Average Delivery Time</TableCell> */}
                           </TableRow>
                         </TableHead>
-
+                        
                         <TableBody>
                           <TableRow>
                             <TableCell align="center">
@@ -393,9 +400,9 @@ class DisplaySummary extends Component {
                             <TableCell align="center">
                               ${this.state.cost}
                             </TableCell>
-                            <TableCell align="center">
-                              ${this.state.nett}
-                            </TableCell>
+                            {/* <TableCell align="center">
+                              ${this.state.totaltime}
+                            </TableCell> */}
                           </TableRow>
                         </TableBody>
                       </Table>

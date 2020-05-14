@@ -15,7 +15,8 @@ import { createManager, signinManager, searchManagerFirstnameOrLastname, editMan
     customerorders,
     checkriderid,
     riderorders,
-    newsalary
+    newsalary,
+    totaldelitime
 } from '../controllers/managersController';
 
 const router = express.Router();
@@ -41,6 +42,7 @@ router.post('/check/customer', checkcustomerid)
 router.post('/check/rider', checkriderid)
 router.post('/summary/rider/orderid', riderorders)
 router.post('/rider/salary', newsalary)
+router.post('/rider/totaldelitime', totaldelitime)
 
 router.post('/summary/customer/orderid', customerorders)
 export default router;
